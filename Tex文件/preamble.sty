@@ -1,0 +1,81 @@
+\ProvidesPackage{preamble}[2026/07/11 Note template settings]
+\setcounter{secnumdepth}{0}   % 编号深度降到 0 → section（层级 1）及以上全部不编号
+
+% 页面与基础排版
+\usepackage{geometry}
+\geometry{left=2.4cm,right=2.4cm,top=2.5cm,bottom=2.5cm}
+\usepackage{setspace}
+\setstretch{1.18}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.25em}
+
+% 数学、图片、表格
+\usepackage{extarrows}
+\usepackage{amsmath,amssymb,amsthm,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+\graphicspath{{figure/}}
+
+% 颜色与链接
+\usepackage{xcolor}
+\definecolor{mainblue}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{EAF3FB}
+\definecolor{deepgreen}{HTML}{2F6B4F}
+\definecolor{softgreen}{HTML}{EDF7EF}
+\definecolor{warmorange}{HTML}{A85C16}
+\definecolor{softorange}{HTML}{FFF4E6}
+\definecolor{darkgray}{HTML}{333333}
+\usepackage[
+  colorlinks=true,
+  linkcolor=mainblue,
+  urlcolor=mainblue,
+  citecolor=deepgreen
+]{hyperref}
+
+% 页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\fancyhf{}
+\makeatletter
+\rhead{\noteheader}
+\makeatother
+\cfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% 列表与代码
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=2em}
+\setlist[enumerate]{leftmargin=2.2em}
+\usepackage{listings}
+\lstdefinestyle{noteCode}{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{mainblue}\bfseries,
+  commentstyle=\color{deepgreen},
+  stringstyle=\color{warmorange},
+  numbers=left,
+  numberstyle=\tiny\color{darkgray},
+  frame=single,
+  breaklines=true,
+  tabsize=2,
+  showstringspaces=false
+}
+\lstset{style=noteCode}
+
+% 每个 section 前自动换页
+% \let\oldsection\section
+% \renewcommand{\section}{\clearpage\oldsection}
+
+% 彩色笔记框
+\usepackage[most]{tcolorbox}
+\newtcolorbox{infobox}[1]{
+  colback=softblue,
+  colframe=mainblue,
+  title=#1,
+  fonttitle=\bfseries,
+  breakable,
+  arc=2mm
+}
+
